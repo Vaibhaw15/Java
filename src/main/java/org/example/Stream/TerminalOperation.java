@@ -1,9 +1,11 @@
 package org.example.Stream;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TerminalOperation {
     public static void main(String[] args) {
@@ -37,6 +39,24 @@ public class TerminalOperation {
         System.out.println(list.stream().findFirst().get());
         System.out.println(list.stream().findAny().get());
 
+        //7. toArray()
+
+        Object array = Stream.of(1,2,3).toArray();
+
+        //8. min/max
+        System.out.println("min" + Stream.of(2,44,69).min((o1,o2)->o1- o2).get());
+        System.out.println("max" + Stream.of(2,44,69).max(Comparator.naturalOrder()).get());
+
+        //9.foreachOrder
+        List<Integer> numbers1 = Arrays.asList(1,2,3,4,6,8,5);
+        System.out.println("Using forEach with parallel stream:");
+        numbers1.parallelStream().forEach(System.out::println);
+        System.out.println("Using forEach with parallel stream:");
+        numbers1.parallelStream().forEachOrdered(System.out::println);
+
+
+
+
         //Example Filtering and Collecting Names
         List<String> names = Arrays.asList("Anna","Bob","Charlie","David");
         System.out.println(names.stream().filter(x->x.length() > 3).collect(Collectors.toList()));
@@ -48,6 +68,21 @@ public class TerminalOperation {
         //Example :Summing Values
         List<Integer> integers = Arrays.asList(1,2,3,4,5,5);
         System.out.println(integers.stream().reduce(Integer::sum).get());
+
+
+        //Example : Counting Occurrences of a Character
+        String sentance = "Hello world";
+        char[] charArray = sentance.toCharArray();
+        System.out.println(sentance.chars().filter(x -> x == 'l').count());
+
+        //Example
+        //Stream cannot be reused after a terminal operation has been called
+        Stream<String> stream = names.stream();
+        stream.forEach(System.out::println);
+      //  stream.map(String::toUpperCase).toList(); //Exception
+
+
+        //stateful & stateless
 
 
 
