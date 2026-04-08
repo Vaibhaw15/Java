@@ -30,7 +30,21 @@ public class MultiThreading2 {
         for(int i=0;i<100000;i++){
             System.out.println("Hello");
         }
-        
+
+        //The lifecycle of a thread in java consists of several states, which a thread can move through during its execution.
+
+        //New - A thread is in this state when it is created but not yet Started.
+        Multithreading3 world4 = new Multithreading3();
+
+        //Runnable - After the start method is called, the thread becomes runnable.It's ready to run and is waiting for CPU time.
+        world4.start();
+
+        //Running - The Thread is in this state when it is executing. // jb v CPU ko time mil jayega to run ho jayega
+
+        //Blocked/Waiting : A thread is in this state when it is waiting for a resource or for another thread to perform an action.
+
+        //Terminated : A thread is in this state when it has finished executing.
+
 
     }
 }
