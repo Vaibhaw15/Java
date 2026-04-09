@@ -73,7 +73,7 @@ class  Task2 implements Runnable{
 
     @Override
     public void run() {
-//    paper.writeWithPaperAndPen(pen);
+ //  paper.writeWithPaperAndPen(pen);
         synchronized (pen) {// here we are ensuring that give me first lock of pen then you will request the lock of paper.
             paper.writeWithPaperAndPen(pen); //thread2 lock paper and tries to lock pen
         }
